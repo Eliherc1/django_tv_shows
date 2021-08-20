@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Show</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="text-end mt-5">
+            <a href="/shows">Go to Back</a>
+        </div>
+        <div class="col-md-4 offset-md-4">
+            <h3>Edit Show</h3>
+    
+                <form action="/shows/{{edit_show.id}}/edit" method="post">
+                    {% csrf_token %}
+        
+                        <div class="row mb-3 mt-5">
+                            <label for="show_title_id" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="show_title_id" name="show_title_e" value="{{edit_show.title}}">
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="show_net_id" class="form-label">Network</label>
+                                <input type="text" class="form-control" id="show_net_id" name="show_net_e" value="{{edit_show.network}}">
+                            </div>
+                            <div class="col">
+                                <label for="show_date_id" class="form-label">Release Date</label>
+                                <input type="date" class="form-control" id="show_date_id" name="show_date_e" value="{{edit_show.release_date|date:"Y-m-d"}}"> 
+                            </div>   
+                        </div>
+                        <div class="row mt-3">
+                            <p>Description</p>
+                            <input class="form-control" name="show_desc_e" value="{{edit_show.description}}" rows="10" cols="40"></input>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-secondary mt-5">Update</button> 
+                        </div>
+                        
+                        
+                    </form>
+                    <div class="row mt-5 text-center">
+                        <a href="/shows">Go to Show</a>
+                    </div>
+        </div>
+        
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

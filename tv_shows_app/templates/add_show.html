@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Show</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="text-end mt-5">
+        <a href="/shows">Go to Back</a>
+    </div>
+    <div class="col-md-4 offset-md-4">
+        <h3>Add a New Show</h3>
+
+            <form action="/shows/create" method="post">
+                {% csrf_token %}
+                    <div class="row mb-3 mt-5">
+                        <label for="show_title_id" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="show_title_id" name="show_title">
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="show_net_id" class="form-label">Network</label>
+                            <input type="text" class="form-control" id="show_net_id" name="show_net">
+                        </div>
+                        <div class="col-6">
+                            <label for="show_date_id" class="form-label">Release Date</label>
+                            <input type="date" class="form-control" id="show_date_id" name="show_date"> 
+                        </div>   
+                    </div>
+                    <div class="row mb-3">
+                        <p>Description</p>
+                        <textarea class="form-control" name="show_desc" rows="10" cols="40"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary">Create</button>
+            </form>
+    </div>
+    
+</div>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
